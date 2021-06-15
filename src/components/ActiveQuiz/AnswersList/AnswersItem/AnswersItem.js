@@ -9,8 +9,6 @@ const AnswersItem = props => {
   }
 
   return (
-
-
     <li 
       className={cls.join(' ')}
       onClick={() => props.onAnswerClick(props.answer.id)}
