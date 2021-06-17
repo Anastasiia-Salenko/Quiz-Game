@@ -3,6 +3,7 @@ import classes from './QuizCreator.module.css';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 import { createControl } from '../../form/formFramework';
+import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 
 function createOptionControl(number) {
    return createControl({
@@ -52,9 +53,8 @@ export default class QuizCreator extends Component {
       const control = this.state.formControls[controlName];
 
       return (
-        <>
+        <Auxiliary key={controlName + index}>
           <Input 
-            key={controlName + index}
             label={control.label}
             value={control.value}
             valid={control.valid}
@@ -64,7 +64,7 @@ export default class QuizCreator extends Component {
             onChange={event => this.changeHandler(event.target.value, controlName)}
           />
           { index === 0 ? <hr/> : null }
-        </>
+        </Auxiliary>
       )
     })
   }
@@ -81,7 +81,7 @@ export default class QuizCreator extends Component {
 
             <select></select>
             <Button
-              type="primory"
+              type="primary"
               onClick={this.addQuestionHandler}
             >
               Додати питання
